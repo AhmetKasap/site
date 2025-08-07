@@ -1,4 +1,5 @@
 import Blog from "../database/blog.model.js";
+import sanitizeHtml from "sanitize-html";
 
 export const getBlogs = async (req, res) => {
   try {
@@ -71,7 +72,32 @@ export const getBlogById = async (req, res) => {
 export const createBlog = async (req, res) => {
   try {
     const { title, content } = req.body;
-    const blog = await Blog.create({ title, content });
+    
+    // HTML içeriğini temizle
+    const sanitizedContent = sanitizeHtml(content, {
+      allowedTags: [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+        'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
+        'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre', 'img', 'iframe' ],
+      allowedAttributes: {
+        'a': [ 'href', 'name', 'target' ],
+        'img': [ 'src', 'alt', 'title', 'width', 'height' ],
+        'iframe': [ 'src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen' ],
+        '*': [ 'class', 'id', 'style' ]
+      },
+      allowedStyles: {
+        '*': {
+          'color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/],
+          'text-align': [/^left$/, /^right$/, /^center$/, /^justify$/],
+          'font-size': [/^\d+(?:px|em|%)$/],
+          'text-decoration': [/^underline$/],
+          'font-weight': [/^bold$/],
+          'font-style': [/^italic$/],
+          'background-color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/]
+        }
+      }
+    });
+
+    const blog = await Blog.create({ title, content: sanitizedContent });
     res.status(201).json(blog);
   } catch (error) {
     console.error("Create blog error:", error);
@@ -83,7 +109,32 @@ export const updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content } = req.body;
-    const blog = await Blog.findByIdAndUpdate(id, { title, content }, { new: true });
+
+    // HTML içeriğini temizle
+    const sanitizedContent = sanitizeHtml(content, {
+      allowedTags: [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+        'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
+        'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre', 'img', 'iframe' ],
+      allowedAttributes: {
+        'a': [ 'href', 'name', 'target' ],
+        'img': [ 'src', 'alt', 'title', 'width', 'height' ],
+        'iframe': [ 'src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen' ],
+        '*': [ 'class', 'id', 'style' ]
+      },
+      allowedStyles: {
+        '*': {
+          'color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/],
+          'text-align': [/^left$/, /^right$/, /^center$/, /^justify$/],
+          'font-size': [/^\d+(?:px|em|%)$/],
+          'text-decoration': [/^underline$/],
+          'font-weight': [/^bold$/],
+          'font-style': [/^italic$/],
+          'background-color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/]
+        }
+      }
+    });
+
+    const blog = await Blog.findByIdAndUpdate(id, { title, content: sanitizedContent }, { new: true });
     if (!blog) {
       return res.status(404).json({ message: "Blog bulunamadı" });
     }

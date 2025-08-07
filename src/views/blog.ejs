@@ -60,7 +60,10 @@
                         <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-primary transition-colors text-center">
                             <a href="/blog/<%= blog._id %>"><%= blog.title %></a>
                         </h2>
-                        <p class="text-gray-600 mb-4 line-clamp-3 text-center"><%= blog.content %></p>
+                        <div class="relative">
+                            <div class="text-gray-600 mb-4 line-clamp-2 text-center overflow-hidden"><%- blog.content.replace(/\n\s*\n/g, ' ').trim() %></div>
+                            <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-white to-transparent"></div>
+                        </div>
                         <div class="text-center">
                             <a href="/blog/<%= blog._id %>" class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition-colors">
                                 Devamını Oku
