@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Av. Mehmet Yılmaz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#64748b',
+                        accent: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">Av. Mehmet Yılmaz</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Ana Sayfa</a>
+                    <a href="hakkimda.html" class="text-gray-700 hover:text-primary transition-colors">Hakkımda</a>
+                    <a href="servisler.html" class="text-gray-700 hover:text-primary transition-colors">Hizmetler</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
+                    <a href="iletisim.html" class="text-primary font-semibold">İletişim</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-primary transition-colors">Ana Sayfa</a>
+                    <a href="hakkimda.html" class="block px-3 py-2 text-gray-700 hover:text-primary transition-colors">Hakkımda</a>
+                    <a href="servisler.html" class="block px-3 py-2 text-gray-700 hover:text-primary transition-colors">Hizmetler</a>
+                    <a href="blog.html" class="block px-3 py-2 text-gray-700 hover:text-primary transition-colors">Blog</a>
+                    <a href="iletisim.html" class="block px-3 py-2 text-primary font-semibold">İletişim</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-6">İletişim</h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">Hukuki sorunlarınız için bizimle iletişime geçin. Size en uygun çözümü bulmak için buradayız.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Bize Ulaşın</h2>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-semibold text-gray-700 mb-2">Ad *</label>
+                                <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-semibold text-gray-700 mb-2">Soyad *</label>
+                                <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-posta *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Telefon</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-semibold text-gray-700 mb-2">Hizmet Alanı</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Seçiniz</option>
+                                <option value="gayrimenkul">Gayrimenkul Hukuku</option>
+                                <option value="is">İş Hukuku</option>
+                                <option value="ticaret">Ticaret Hukuku</option>
+                                <option value="aile">Aile Hukuku</option>
+                                <option value="genel">Genel Hukuki Danışmanlık</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Mesajınız *</label>
+                            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Hukuki sorununuzu detaylı bir şekilde açıklayın..."></textarea>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="privacy" name="privacy" required class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                            <label for="privacy" class="text-sm text-gray-700">
+                                <a href="#" class="text-primary hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">İletişim Bilgileri</h2>
+                    
+                    <div class="space-y-8">
+                        <!-- Office Info -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-building text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Hukuk Bürosu</h3>
+                                    <p class="text-gray-600 mb-2">Levent Mahallesi, Büyükdere Caddesi</p>
+                                    <p class="text-gray-600">No: 123, Kat: 5, Daire: 15</p>
+                                    <p class="text-gray-600">34330 Beşiktaş / İstanbul</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Methods -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-phone text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Telefon</h4>
+                                    <p class="text-gray-600">0212 123 45 67</p>
+                                    <p class="text-gray-600">0532 123 45 67 (Mobil)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">E-posta</h4>
+                                    <p class="text-gray-600">info@avmehmetyilmaz.com</p>
+                                    <p class="text-gray-600">mehmet@avmehmetyilmaz.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Çalışma Saatleri</h4>
+                                    <p class="text-gray-600">Pazartesi - Cuma: 09:00 - 18:00</p>
+                                    <p class="text-gray-600">Cumartesi: 09:00 - 14:00</p>
+                                    <p class="text-gray-600">Pazar: Kapalı</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="bg-gradient-to-br from-primary to-blue-800 rounded-xl p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-4">Sosyal Medya</h3>
+                            <p class="text-blue-100 mb-6">Güncel hukuki gelişmeler ve makaleler için sosyal medya hesaplarımızı takip edin.</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-facebook text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Konum</h2>
+                <p class="text-xl text-gray-600">Hukuk büromuz Levent'te, kolay ulaşılabilir bir konumda bulunmaktadır</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="h-96 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt text-6xl text-gray-400 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-600 mb-2">Harita</h3>
+                        <p class="text-gray-500">Levent, Büyükdere Caddesi No: 123</p>
+                        <p class="text-gray-500">Beşiktaş / İstanbul</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Sık Sorulan Sorular</h2>
+                <p class="text-xl text-gray-600">En çok merak edilen soruların cevapları</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">İlk danışmanlık ücretsiz mi?</h3>
+                        <p class="text-gray-600">Evet, ilk 30 dakikalık danışmanlık seansımız tamamen ücretsizdir. Bu süre içinde hukuki durumunuzu analiz eder ve size genel çözüm önerileri sunarız.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Randevu nasıl alabilirim?</h3>
+                        <p class="text-gray-600">Telefon, e-posta veya web sitemizdeki iletişim formu aracılığıyla randevu alabilirsiniz. Size en uygun zamanı belirleyerek görüşme planlarız.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Uzaktan danışmanlık hizmeti veriyor musunuz?</h3>
+                        <p class="text-gray-600">Evet, video konferans yoluyla uzaktan danışmanlık hizmeti sunuyoruz. Bu sayede farklı şehirlerdeki müvekkillerimize de hizmet verebiliyoruz.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Fiyatlandırma nasıl yapılıyor?</h3>
+                        <p class="text-gray-600">Fiyatlandırma davanın karmaşıklığına, süresine ve gerektirdiği iş yüküne göre belirlenir. Detaylı fiyat bilgisi için bizimle iletişime geçebilirsiniz.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Hangi hukuki alanlarda uzmanlığınız var?</h3>
+                        <p class="text-gray-600">Gayrimenkul hukuku, iş hukuku, ticaret hukuku ve aile hukuku alanlarında uzmanlığım bulunmaktadır. 15 yıllık deneyimimle bu alanlarda kapsamlı hizmet sunuyorum.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Acil durumlarda ulaşabilir miyim?</h3>
+                        <p class="text-gray-600">Acil hukuki durumlar için 7/24 telefon hattımız açıktır. Acil durumlarda mobil numaramızdan bize ulaşabilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-primary to-blue-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Hukuki Sorunlarınız İçin Hemen İletişime Geçin</h2>
+            <p class="text-xl mb-8 text-blue-100">Ücretsiz ilk danışmanlık için hemen randevu alın</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+902121234567" class="bg-accent hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                    <i class="fas fa-phone mr-2"></i>0212 123 45 67
+                </a>
+                <a href="mailto:info@avmehmetyilmaz.com" class="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>E-posta Gönder
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Av. Mehmet Yılmaz</h3>
+                    <p class="text-gray-400 mb-4">Güvenilir hukuki çözümler için 15 yıldır hizmetinizdeyiz.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Ana Sayfa</a></li>
+                        <li><a href="hakkimda.html" class="text-gray-400 hover:text-white transition-colors">Hakkımda</a></li>
+                        <li><a href="servisler.html" class="text-gray-400 hover:text-white transition-colors">Hizmetler</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hizmetler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="servisler.html" class="text-gray-400 hover:text-white transition-colors">Gayrimenkul Hukuku</a></li>
+                        <li><a href="servisler.html" class="text-gray-400 hover:text-white transition-colors">İş Hukuku</a></li>
+                        <li><a href="servisler.html" class="text-gray-400 hover:text-white transition-colors">Ticaret Hukuku</a></li>
+                        <li><a href="servisler.html" class="text-gray-400 hover:text-white transition-colors">Aile Hukuku</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">İletişim</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Levent, İstanbul</p>
+                        <p><i class="fas fa-phone mr-2"></i>0212 123 45 67</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@avmehmetyilmaz.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Av. Mehmet Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html> 
