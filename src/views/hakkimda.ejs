@@ -1,0 +1,245 @@
+<%- contentFor('extraStyles') %>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#1e40af',
+                    secondary: '#64748b',
+                    accent: '#f59e0b'
+                }
+            }
+        }
+    }
+</script>
+
+<%- contentFor('body') %>
+<!-- Hero Section -->
+<section class="pt-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-6">Hakkımda</h1>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto">15 yıllık hukuki deneyimimle, müvekkillerimin haklarını en iyi şekilde korumak için çalışıyorum. Her dava benim için sadece bir iş değil, bir sorumluluktur.</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Profesyonel Geçmişim</h2>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Eğitim</h3>
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">İstanbul Üniversitesi Hukuk Fakültesi</h4>
+                                    <p class="text-gray-600">Lisans Derecesi - Hukuk</p>
+                                    <p class="text-sm text-gray-500">2004 - 2008</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Deneyim</h3>
+                        <div class="space-y-4">
+                            <% const experiences = [
+                                {
+                                    title: "Kurucu Ortak & Baş Avukat",
+                                    company: "İbrahim Halil Köroğlu Hukuk Bürosu",
+                                    period: "2015 - Günümüz",
+                                    description: "Kendi hukuk büromu kurarak müvekkillerime daha kişisel ve etkili hizmet sunmaya başladım.",
+                                    icon: "briefcase",
+                                    bgColor: "accent"
+                                },
+                                {
+                                    title: "Kıdemli Avukat",
+                                    company: "Demir & Demir Hukuk Bürosu",
+                                    period: "2010 - 2015",
+                                    description: "Gayrimenkul ve ticaret hukuku alanlarında uzmanlaştım.",
+                                    icon: "building",
+                                    bgColor: "green-500"
+                                },
+                                {
+                                    title: "Avukat",
+                                    company: "Yılmaz & Yılmaz Hukuk Bürosu",
+                                    period: "2008 - 2010",
+                                    description: "İlk mesleki deneyimlerimi kazandığım dönem.",
+                                    icon: "user-tie",
+                                    bgColor: "blue-500"
+                                }
+                            ] %>
+
+                            <% experiences.forEach(exp => { %>
+                            <div class="bg-gray-50 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-<%= exp.bgColor %> rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-<%= exp.icon %> text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900"><%= exp.title %></h4>
+                                        <p class="text-gray-600"><%= exp.company %></p>
+                                        <p class="text-sm text-gray-500"><%= exp.period %></p>
+                                        <p class="text-gray-600 mt-2"><%= exp.description %></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Uzmanlık Alanlarım</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <% const expertiseAreas = [
+                                {
+                                    title: "Gayrimenkul Hukuku",
+                                    description: "Emlak alım-satım, kira hukuku, kat mülkiyeti",
+                                    bgColor: "primary",
+                                    textColor: "primary"
+                                },
+                                {
+                                    title: "İş Hukuku",
+                                    description: "İşçi-işveren uyuşmazlıkları, toplu iş hukuku",
+                                    bgColor: "accent",
+                                    textColor: "accent"
+                                },
+                                {
+                                    title: "Ticaret Hukuku",
+                                    description: "Şirketler hukuku, sözleşme hukuku",
+                                    bgColor: "green-500",
+                                    textColor: "green-600"
+                                },
+                                {
+                                    title: "Aile Hukuku",
+                                    description: "Boşanma, nafaka, velayet davaları",
+                                    bgColor: "purple-500",
+                                    textColor: "purple-600"
+                                }
+                            ] %>
+
+                            <% expertiseAreas.forEach(area => { %>
+                            <div class="bg-<%= area.bgColor %>/10 rounded-lg p-4">
+                                <h4 class="font-semibold text-<%= area.textColor %> mb-2"><%= area.title %></h4>
+                                <p class="text-gray-600 text-sm"><%= area.description %></p>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Felsefem</h3>
+                        <div class="bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-lg p-6">
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                "Her müvekkilimin hikayesi benim için özeldir. Hukuki süreçler sadece yasal prosedürler değil, 
+                                insanların hayatlarını etkileyen önemli dönüm noktalarıdır. Bu nedenle her dava için özel 
+                                strateji geliştirir, müvekkillerimin haklarını en iyi şekilde korumaya çalışırım."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24">
+                    <!-- Profile Card -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                        <div class="text-center mb-6">
+                            <div class="w-32 h-32 bg-gradient-to-br from-primary to-blue-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-user-tie text-4xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Av. İbrahim Halil Köroğlu</h3>
+                            <p class="text-gray-600">Kurucu Ortak & Baş Avukat</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-primary"></i>
+                                <span class="text-gray-700">0212 123 45 67</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-primary"></i>
+                                <span class="text-gray-700">info@avkoroglu.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                <span class="text-gray-700">Levent, İstanbul</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="bg-gradient-to-br from-primary to-blue-800 rounded-xl p-8 text-white">
+                        <h3 class="text-xl font-semibold mb-6">Başarılarım</h3>
+                        <div class="space-y-4">
+                            <% const stats = [
+                                { label: "Başarılı Dava", value: "500+" },
+                                { label: "Deneyim Yılı", value: "15" },
+                                { label: "Mutlu Müvekkil", value: "1000+" },
+                                { label: "Başarı Oranı", value: "%95" }
+                            ] %>
+
+                            <% stats.forEach(stat => { %>
+                            <div class="flex justify-between items-center">
+                                <span><%= stat.label %></span>
+                                <span class="font-bold"><%= stat.value %></span>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Sertifikalar ve Üyelikler</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <% const certifications = [
+                {
+                    title: "İstanbul Barosu",
+                    status: "Aktif Üye",
+                    icon: "certificate",
+                    bgColor: "primary"
+                },
+                {
+                    title: "Gayrimenkul Hukuku Uzmanlığı",
+                    status: "Sertifikalı Uzman",
+                    icon: "award",
+                    bgColor: "accent"
+                },
+                {
+                    title: "Türkiye Barolar Birliği",
+                    status: "Üye",
+                    icon: "users",
+                    bgColor: "green-500"
+                }
+            ] %>
+
+            <% certifications.forEach(cert => { %>
+            <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                <div class="w-16 h-16 bg-<%= cert.bgColor %>/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-<%= cert.icon %> text-2xl text-<%= cert.bgColor %>"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2"><%= cert.title %></h3>
+                <p class="text-gray-600"><%= cert.status %></p>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>

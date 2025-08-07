@@ -1,0 +1,160 @@
+<%- contentFor('extraStyles') %>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#1e40af',
+                    secondary: '#64748b',
+                    accent: '#f59e0b'
+                }
+            }
+        }
+    }
+</script>
+
+<%- contentFor('body') %>
+<!-- Hero Section -->
+<section class="pt-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-5xl font-bold mb-6">Hukuki Çözümleriniz İçin Güvenilir Adres</h1>
+                <p class="text-xl mb-8 text-blue-100">15 yıllık deneyimimle, hukuki sorunlarınızı çözmek için yanınızdayım. Adalet ve güven için doğru tercih.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/iletisim" class="bg-accent hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors text-center">
+                        Ücretsiz Danışmanlık
+                    </a>
+                    <a href="/servisler" class="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors text-center">
+                        Hizmetlerimiz
+                    </a>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                    <i class="fas fa-balance-scale text-8xl text-accent mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Uzman Hukuk Danışmanlığı</h3>
+                    <p class="text-blue-100">Her alanda profesyonel hukuki destek</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                <div class="text-gray-600">Başarılı Dava</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2">15</div>
+                <div class="text-gray-600">Yıl Deneyim</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+                <div class="text-gray-600">Mutlu Müvekkil</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                <div class="text-gray-600">Hukuki Destek</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Hizmet Alanlarım</h2>
+            <p class="text-xl text-gray-600">Uzmanlık alanlarımda size profesyonel hukuki destek sağlıyorum</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-home text-2xl text-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Gayrimenkul Hukuku</h3>
+                <p class="text-gray-600 mb-4">Emlak alım-satım, kira hukuku, kat mülkiyeti ve imar hukuku konularında uzman danışmanlık.</p>
+                <a href="/servisler" class="text-primary font-semibold hover:underline">Detaylar →</a>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-briefcase text-2xl text-accent"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">İş Hukuku</h3>
+                <p class="text-gray-600 mb-4">İşçi-işveren uyuşmazlıkları, toplu iş hukuku ve sosyal güvenlik hukuku alanlarında destek.</p>
+                <a href="/servisler" class="text-primary font-semibold hover:underline">Detaylar →</a>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+                <div class="w-16 h-16 bg-green-500/10 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-building text-2xl text-green-500"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Ticaret Hukuku</h3>
+                <p class="text-gray-600 mb-4">Şirketler hukuku, sözleşme hukuku ve ticari uyuşmazlıkların çözümünde profesyonel destek.</p>
+                <a href="/servisler" class="text-primary font-semibold hover:underline">Detaylar →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Hakkımda</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    2008 yılında İstanbul Üniversitesi Hukuk Fakültesi'nden mezun olduktan sonra, 
+                    çeşitli hukuk bürolarında deneyim kazandım. 2015 yılında kendi hukuk büromu 
+                    açarak müvekkillerime daha kişisel ve etkili hizmet sunmaya başladım.
+                </p>
+                <p class="text-lg text-gray-600 mb-8">
+                    Özellikle gayrimenkul hukuku, iş hukuku ve ticaret hukuku alanlarında 
+                    uzmanlaşmış olup, her dava için özel strateji geliştirerek başarılı sonuçlar elde ediyorum.
+                </p>
+                <a href="/hakkimda" class="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                    Daha Fazla Bilgi
+                </a>
+            </div>
+            <div class="text-center">
+                <div class="bg-gradient-to-br from-primary to-blue-800 rounded-2xl p-8 text-white">
+                    <div class="w-32 h-32 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">Av. İbrahim Halil Köroğlu</h3>
+                    <p class="text-blue-100">Kurucu Ortak & Baş Avukat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="py-16 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-6">Hukuki Sorunlarınız İçin Bizimle İletişime Geçin</h2>
+        <p class="text-xl mb-8 text-blue-100">Ücretsiz ilk danışmanlık için hemen randevu alın</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+902121234567" class="bg-accent hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                <i class="fas fa-phone mr-2"></i>0212 123 45 67
+            </a>
+            <a href="mailto:info@avkoroglu.com" class="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-8 rounded-lg transition-colors">
+                <i class="fas fa-envelope mr-2"></i>E-posta Gönder
+            </a>
+        </div>
+    </div>
+</section>
+
+<%- contentFor('extraScripts') %>
+<script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>

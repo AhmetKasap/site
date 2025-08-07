@@ -1,24 +1,27 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+
 dotenv.config();
 
-export const authMiddleware = (req, res, next) => {
+export const authMiddleware = async (req, res, next) => {
     try {
-        const token = req.headers.authorization;
-        const bearerToken = token.split(" ")[1];
+        // Token'ı header'dan veya query'den al
+        const token = req.headers.authorization?.split(" ")[1] || req.query.token;
+        
         if (!token) {
-            return res.status(401).json({ message: "Unauthorized" });
+            return res.status(401).json({ message: "Auth failed - No token" });
         }
-        const decoded = jwt.verify(bearerToken, process.env.JWT_SECRET);
-        req.user = decoded;
-        next();
+
+        try {
+            const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+            req.userId = decodedData.id;
+            next();
+        } catch (error) {
+            console.log("Token verification error:", error);
+            return res.status(401).json({ message: "Auth failed - Invalid token" });
+        }
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        console.log("Auth middleware error:", error);
+        res.status(401).json({ message: "Auth failed - Server error" });
     }
-};
-
-
-export const tokenGenerator = (req, res, next) => {
-    const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.status(200).json({ token });
 };

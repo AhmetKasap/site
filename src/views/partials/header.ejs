@@ -1,0 +1,33 @@
+<nav class="bg-white shadow-lg fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-primary">Av. İbrahim Halil Köroğlu</h1>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="<%= path === '/' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Ana Sayfa</a>
+                <a href="/hakkimda" class="<%= path === '/hakkimda' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Hakkımda</a>
+                <a href="/servisler" class="<%= path === '/servisler' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Hizmetler</a>
+                <a href="/blog" class="<%= path === '/blog' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Blog</a>
+                <a href="/iletisim" class="<%= path === '/iletisim' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">İletişim</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                <a href="/" class="block px-3 py-2 <%= path === '/' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Ana Sayfa</a>
+                <a href="/hakkimda" class="block px-3 py-2 <%= path === '/hakkimda' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Hakkımda</a>
+                <a href="/servisler" class="block px-3 py-2 <%= path === '/servisler' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Hizmetler</a>
+                <a href="/blog" class="block px-3 py-2 <%= path === '/blog' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">Blog</a>
+                <a href="/iletisim" class="block px-3 py-2 <%= path === '/iletisim' ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary transition-colors' %>">İletişim</a>
+            </div>
+        </div>
+    </div>
+</nav>

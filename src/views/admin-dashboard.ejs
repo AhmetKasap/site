@@ -1,0 +1,246 @@
+<%- contentFor('extraStyles') %>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#1e40af',
+                    secondary: '#64748b',
+                    accent: '#f59e0b'
+                }
+            }
+        }
+    }
+</script>
+
+<%- contentFor('body') %>
+<div class="min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-primary">Admin Panel</h1>
+                </div>
+                <div class="flex items-center">
+                    <button id="logoutBtn" class="text-gray-700 hover:text-primary">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Çıkış Yap
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Blog List -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">Blog Yazıları</h2>
+                <button id="newBlogBtn" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Yeni Blog Ekle
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Başlık</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <% blogs.forEach(blog => { %>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900"><%= blog.title %></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">
+                                    <%= new Date(blog.createdAt).toLocaleDateString('tr-TR') %>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-blue-600 hover:text-blue-800 mr-3 editBlog" data-id="<%= blog._id %>">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-800 deleteBlog" data-id="<%= blog._id %>">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Modal -->
+<div id="blogModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-900" id="modalTitle">Yeni Blog Ekle</h3>
+                    <button class="text-gray-400 hover:text-gray-500" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="blogForm" class="space-y-6">
+                    <input type="hidden" id="blogId">
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700">Başlık</label>
+                        <input type="text" id="title" name="title" required 
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="content" class="block text-sm font-medium text-gray-700">İçerik</label>
+                        <textarea id="content" name="content" rows="10" required 
+                                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" id="cancelBtn" 
+                                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                            İptal
+                        </button>
+                        <button type="submit" 
+                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700">
+                            Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('extraScripts') %>
+<script>
+const token = localStorage.getItem('token');
+if (!token) {
+    window.location.href = '/auth/login-avukat-halil-koroglu';
+}
+
+// Her fetch isteğine token ekle
+const fetchWithAuth = (url, options = {}) => {
+    return fetch(url, {
+        ...options,
+        headers: {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`
+        }
+    });
+};
+
+const modal = document.getElementById('blogModal');
+const blogForm = document.getElementById('blogForm');
+const modalTitle = document.getElementById('modalTitle');
+const blogId = document.getElementById('blogId');
+const title = document.getElementById('title');
+const content = document.getElementById('content');
+
+// Modal açma/kapama
+document.getElementById('newBlogBtn').addEventListener('click', () => {
+    modalTitle.textContent = 'Yeni Blog Ekle';
+    blogId.value = '';
+    title.value = '';
+    content.value = '';
+    modal.classList.remove('hidden');
+});
+
+[document.getElementById('closeModal'), document.getElementById('cancelBtn')].forEach(btn => {
+    btn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+});
+
+// Blog formu gönderme
+blogForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const method = blogId.value ? 'PUT' : 'POST';
+    const url = blogId.value ? `/blog/${blogId.value}` : '/blog';
+    
+    try {
+        const response = await fetchWithAuth(url, {
+            method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: title.value,
+                content: content.value
+            })
+        });
+        
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            alert('Bir hata oluştu');
+        }
+    } catch (error) {
+        alert('Bir hata oluştu');
+    }
+});
+
+// Blog düzenleme
+document.querySelectorAll('.editBlog').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const id = btn.dataset.id;
+        try {
+            const response = await fetchWithAuth(`/blog/${id}`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            const blog = await response.json();
+            
+            blogId.value = blog._id;
+            title.value = blog.title;
+            content.value = blog.content;
+            modalTitle.textContent = 'Blog Düzenle';
+            modal.classList.remove('hidden');
+        } catch (error) {
+            alert('Blog yüklenirken bir hata oluştu');
+        }
+    });
+});
+
+// Blog silme
+document.querySelectorAll('.deleteBlog').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        if (!confirm('Bu blogu silmek istediğinizden emin misiniz?')) return;
+        
+        const id = btn.dataset.id;
+        try {
+            const response = await fetchWithAuth(`/blog/${id}`, {
+                method: 'DELETE'
+            });
+            
+            if (response.ok) {
+                window.location.href = `/admin/dashboard?token=${token}`;
+            } else {
+                alert('Blog silinirken bir hata oluştu');
+            }
+        } catch (error) {
+            alert('Blog silinirken bir hata oluştu');
+        }
+    });
+});
+
+// Çıkış yapma
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    if (confirm('Çıkış yapmak istediğinizden emin misiniz?')) {
+        localStorage.removeItem('token');
+        window.location.href = '/admin/login';
+    }
+});
+</script>

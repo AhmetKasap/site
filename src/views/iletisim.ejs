@@ -1,0 +1,159 @@
+<%- contentFor('extraStyles') %>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#1e40af',
+                    secondary: '#64748b',
+                    accent: '#f59e0b'
+                }
+            }
+        }
+    }
+</script>
+
+<%- contentFor('body') %>
+<!-- Hero Section -->
+<section class="pt-20 bg-gradient-to-br from-primary to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-6">İletişim</h1>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto">Hukuki danışmanlık için bizimle iletişime geçin. Size en kısa sürede dönüş yapacağız.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Contact Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Bize Ulaşın</h2>
+                    <form action="/iletisim" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Ad Soyad</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">E-posta</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Telefon</label>
+                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Konu</label>
+                            <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Seçiniz</option>
+                                <option value="gayrimenkul">Gayrimenkul Hukuku</option>
+                                <option value="is">İş Hukuku</option>
+                                <option value="ticaret">Ticaret Hukuku</option>
+                                <option value="aile">Aile Hukuku</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Mesajınız</label>
+                            <textarea name="message" required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 space-y-8">
+                    <!-- Office Info -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Ofis Bilgileri</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Adres</h4>
+                                    <p class="text-gray-600">Levent Mahallesi, Büyükdere Caddesi No: 123<br>Şişli, İstanbul</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-phone text-xl text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Telefon</h4>
+                                    <p class="text-gray-600">0212 123 45 67</p>
+                                    <p class="text-gray-600">0532 123 45 67</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-xl text-green-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">E-posta</h4>
+                                    <p class="text-gray-600">info@avkoroglu.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Working Hours -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Çalışma Saatleri</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Pazartesi - Cuma</span>
+                                <span class="font-semibold text-gray-900">09:00 - 18:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Cumartesi</span>
+                                <span class="font-semibold text-gray-900">10:00 - 14:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Pazar</span>
+                                <span class="font-semibold text-gray-900">Kapalı</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-gradient-to-br from-primary to-blue-800 rounded-xl p-8 text-white">
+                        <h3 class="text-xl font-semibold mb-6">Sosyal Medya</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <a href="#" class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-lg hover:bg-white/30 transition-colors">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.2321658405757!2d29.0060103!3d41.0765657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a2a2c3b963%3A0x7671d1b9817b8519!2sLevent%2C%20B%C3%BCy%C3%BCkdere%20Cd.%2C%2034330%20Be%C5%9Fikta%C5%9F%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1647887842012!5m2!1str!2str" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
