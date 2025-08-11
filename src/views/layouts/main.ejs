@@ -15,5 +15,20 @@
     <%- include('../partials/footer') %>
     
     <%- typeof extraScripts !== 'undefined' ? extraScripts : '' %>
+    <script>
+      (function(){
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const successEl = document.getElementById('form-success');
+          if (successEl) {
+            successEl.classList.remove('hidden');
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          form.reset();
+        });
+      })();
+    </script>
 </body>
 </html>
