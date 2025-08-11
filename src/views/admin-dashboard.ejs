@@ -1,7 +1,8 @@
 <%- contentFor('extraStyles') %>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<script src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
 <script>
     tailwind.config = {
         theme: {
@@ -110,7 +111,8 @@
                     </div>
                     <div>
                         <label for="content" class="block text-sm font-medium text-gray-700">İçerik</label>
-                        <textarea id="content" name="content" rows="20" required></textarea>
+                        <div id="editor" class="bg-white border border-gray-300 rounded-lg" style="min-height: 300px;"></div>
+                        <textarea id="content" name="content" required class="hidden"></textarea>
                     </div>
                     <div class="flex justify-end space-x-3">
                         <button type="button" id="cancelBtn" 
@@ -130,20 +132,25 @@
 
 <%- contentFor('extraScripts') %>
 <script>
-// TinyMCE başlatma
-tinymce.init({
-    selector: '#content',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-    height: 500,
-    language: 'tr',
-    branding: false,
-    menubar: false,
-    setup: function(editor) {
-        editor.on('change', function() {
-            editor.save();
-        });
+// Quill başlatma
+const quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ align: [] }],
+            [{ color: [] }, { background: [] }],
+            ['link']
+        ]
     }
+});
+// Editör içeriğini gizli textarea ile senkronize et
+const hiddenContent = document.getElementById('content');
+hiddenContent.value = quill.root.innerHTML;
+quill.on('text-change', () => {
+    hiddenContent.value = quill.root.innerHTML;
 });
 const token = localStorage.getItem('token');
 if (!token) {
@@ -173,7 +180,8 @@ document.getElementById('newBlogBtn').addEventListener('click', () => {
     modalTitle.textContent = 'Yeni Blog Ekle';
     blogId.value = '';
     title.value = '';
-    content.value = '';
+    quill.root.innerHTML = '';
+    hiddenContent.value = '';
     modal.classList.remove('hidden');
 });
 
@@ -226,7 +234,8 @@ document.querySelectorAll('.editBlog').forEach(btn => {
             
             blogId.value = blog._id;
             title.value = blog.title;
-            content.value = blog.content;
+            quill.root.innerHTML = blog.content || '';
+            hiddenContent.value = quill.root.innerHTML;
             modalTitle.textContent = 'Blog Düzenle';
             modal.classList.remove('hidden');
         } catch (error) {
